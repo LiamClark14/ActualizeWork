@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/stock/indicators/indicators.js"></script>
+  <script src="https://code.highcharts.com/stock/indicators/atr.js"></script>
+
+
+  <div id="container" style="height: 400px; min-width: 310px"></div>
+
+</head>
+
+<body>
+  <script>
+    Highcharts.getJSON('https://www.highcharts.com/samples/data/aapl-ohlc.json', function (data) {
+
+      Highcharts.stockChart('container', {
+
+        rangeSelector: {
+          selected: 2
+        },
+
+        title: {
+          text: 'AAPL Stock Price'
+        },
+
+        legend: {
+          enabled: true
+        },
+
+        plotOptions: {
+          series: {
+            showInLegend: true
+          }
+        },
+
+        yAxis: [{
+          height: '50%'
+        }, {
+          top: '60%',
+          height: '40%'
+        }],
+
+        series: [{
+          type: 'ohlc',
+          id: 'aapl',
+          name: 'aapl Stock Price',
+          data: data
+        }, {
+          type: 'atr',
+          linkedTo: 'aapl',
+          yAxis: 1
+        }, {
+          type: 'atr',
+          linkedTo: 'aapl',
+          yAxis: 1,
+          params: {
+            period: 50
+          }
+        }]
+      });
+    });
+  </script>
+
+
+
+</body>
+
+</html>

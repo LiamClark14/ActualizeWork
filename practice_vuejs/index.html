@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice vue.js</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+  <h1>Hello from HTML</h1>
+  <div id="app">
+    <h1>{{ message }}</h1>
+    <p>{{ name }}</p>
+    <button v-on:click="changeMessage()">Don't press this button</button>
+    <input type="text" v-model="name" />
+  </div>
+</body>
+<script src="index.js" defer></script>
+
+</html>
